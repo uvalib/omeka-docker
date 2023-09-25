@@ -1,4 +1,0 @@
-user     = "${DBUSER}"
-password = "${DBPASSWD}"
-dbname   = "${DBNAME}"
-host     = "${DBHOST}"

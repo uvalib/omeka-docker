@@ -20,7 +20,7 @@ RUN apt-get -qq update && apt-get -qq -y --no-install-recommends install \
 
 # install the PHP extensions we need
 RUN docker-php-ext-install -j$(nproc) iconv \
-    pdo pdo_mysql mysqli gd
+    pdo pdo_mysql mysqli gd exif
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 
 RUN curl -J -L -s -k \
@@ -51,8 +51,8 @@ CMD ${APP_HOME}/scripts/entry.sh
 # configuration and scripts
 COPY package/config/imagemagick-policy.xml /etc/ImageMagick/policy.xml
 COPY package/config/.htaccess /var/www/html/.htaccess
-COPY package/config/database.ini.template ${APP_HOME}/config/database.ini.template
-COPY package/config/local.config.php.template ${APP_HOME}/config/local.config.php.template
+COPY package/config/db.ini.template ${APP_HOME}/config/db.ini.template
+COPY package/config/config.ini.template ${APP_HOME}/config/config.ini.template
 COPY package/scripts/entry.sh ${APP_HOME}/scripts/entry.sh
 COPY package/scripts/make-config-files.sh ${APP_HOME}/scripts/make-config-files.sh
 

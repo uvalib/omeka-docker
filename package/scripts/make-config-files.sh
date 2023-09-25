@@ -6,12 +6,12 @@ render_template() {
 }
 
 # generate the settings file from the template
-render_template /omeka/config/database.ini.template > /var/www/html/config/database.ini
-chown www-data:www-data /var/www/html/config/database.ini
+render_template /omeka/config/db.ini.template > /var/www/html/db.ini
+chown www-data:www-data /var/www/html/db.ini
 
 # generate the config file from the template
-render_template /omeka/config/local.config.php.template > /var/www/html/config/local.config.php
-chown www-data:www-data /var/www/html/config/local.config.php
+render_template /omeka/config/config.ini.template > /var/www/html/application/config/config.ini
+chown www-data:www-data /var/www/html/application/config/config.ini
 
 #
 # end of file
