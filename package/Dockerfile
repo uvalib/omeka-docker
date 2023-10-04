@@ -16,7 +16,8 @@ RUN apt-get -qq update && apt-get -qq -y --no-install-recommends install \
     libjpeg-dev \
     libmemcached-dev \
     zlib1g-dev \
-    imagemagick
+    imagemagick \
+    sendmail
 
 # install the PHP extensions we need
 RUN docker-php-ext-install -j$(nproc) iconv \
