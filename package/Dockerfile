@@ -50,7 +50,7 @@ CMD ${APP_HOME}/scripts/entry.sh
 
 # configuration and scripts
 COPY package/config/imagemagick-policy.xml /etc/ImageMagick/policy.xml
-COPY package/config/.htaccess.template ${APP_HOME}/config/.htaccess.template
+COPY package/config/.htaccess /var/www/html/.htaccess
 COPY package/config/db.ini.template ${APP_HOME}/config/db.ini.template
 COPY package/config/config.ini.template ${APP_HOME}/config/config.ini.template
 COPY package/scripts/entry.sh ${APP_HOME}/scripts/entry.sh
