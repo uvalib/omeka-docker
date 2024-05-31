@@ -25,12 +25,12 @@ RUN docker-php-ext-install -j$(nproc) iconv \
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 
 RUN curl -J -L -s -k \
-    'https://github.com/omeka/Omeka/releases/download/v3.1.1/omeka-3.1.1.zip' \
+    'https://github.com/omeka/Omeka/releases/download/v3.1.2/omeka-3.1.2.zip' \
     -o /var/www/omeka.zip \
     &&  unzip -q /var/www/omeka.zip -d /var/www/ \
     &&  rm /var/www/omeka.zip \
     &&  rm -rf /var/www/html \
-    &&  mv /var/www/omeka-3.1.1 /var/www/html \
+    &&  mv /var/www/omeka-3.1.2 /var/www/html \
     &&  chown -R www-data:www-data /var/www/html
 
 #VOLUME /var/www/html
