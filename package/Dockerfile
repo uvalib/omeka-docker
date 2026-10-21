@@ -1,11 +1,11 @@
 #
 #
 #
-FROM public.ecr.aws/docker/library/php:8.2-apache-bookworm
+FROM public.ecr.aws/docker/library/php:8.5.12RC1-apache-bookworm
 
 RUN a2enmod rewrite
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qq update && apt-get -qq -y --no-install-recommends install \
     curl \
     unzip \
@@ -25,18 +25,18 @@ RUN docker-php-ext-install -j$(nproc) iconv \
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 
 RUN curl -J -L -s -k \
-    'https://github.com/omeka/Omeka/releases/download/v3.2.1/omeka-3.2.1.zip' \
+    'https://github.com/omeka/Omeka/releases/download/v3.2.2/omeka-3.2.2.zip' \
     -o /var/www/omeka.zip \
     &&  unzip -q /var/www/omeka.zip -d /var/www/ \
     &&  rm /var/www/omeka.zip \
     &&  rm -rf /var/www/html \
-    &&  mv /var/www/omeka-3.2.1 /var/www/html \
+    &&  mv /var/www/omeka-3.2.2 /var/www/html \
     &&  chown -R www-data:www-data /var/www/html
 
 #VOLUME /var/www/html
 
 # Specify home
-ENV APP_HOME /omeka
+ENV APP_HOME=/omeka
 WORKDIR ${APP_HOME}
 
 # .profile
