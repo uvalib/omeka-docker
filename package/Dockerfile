@@ -1,7 +1,7 @@
 #
 #
 #
-FROM public.ecr.aws/docker/library/php:8.5.12RC1-apache-bookworm
+FROM public.ecr.aws/docker/library/php:8.5.12-apache-bookworm
 
 RUN a2enmod rewrite
 
